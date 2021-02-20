@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react'
+import { createBreakpoints } from '@chakra-ui/theme-tools'
 
 const theme = extendTheme({
     components: {
@@ -8,6 +9,12 @@ const theme = extendTheme({
             }
         }
     },
+    breakpoints: createBreakpoints({
+        sm: '420px',
+        md: '600px',
+        lg: '960px',
+        xl: '1200px'
+    }),
     fonts: {
         heading: 'Inter, sans-serif',
         body: 'Inter, sans-serif',

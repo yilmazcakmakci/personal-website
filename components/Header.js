@@ -13,7 +13,7 @@ const menu = [
 export default function Home() {
 
     const router = useRouter()
-    const currentPage = menu.find(({ url }) => url === router.pathname)
+    const currentPage = menu.find(({ url }) => url !== '/' && router.pathname.includes(url))
 
     return (
         <Flex as="nav" py={[5, 5, 10]} justify="space-between" align="center">

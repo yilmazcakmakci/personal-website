@@ -3,7 +3,7 @@ import Header from './Header'
 
 const Layout = ({ children }) => {
     return (
-        <Container maxW="4xl" minH="100vh">
+        <Container maxW="4xl" minH="100vh" pb={32}>
             <Header />
 
             {children}
