@@ -7,7 +7,7 @@ import readTime from '../utils/readtime'
 
 export default function Projects({ p, page }) {
     return (
-        <NextLink href={`${page}/${p.slug}`} passHref>
+        <NextLink href={`/${page}/${p.slug}`} passHref>
             <Link
                 _focus={{ boxShadow: 'none' }}
                 _hover={{ backgroundColor: 'gray.800' }}
@@ -19,8 +19,9 @@ export default function Projects({ p, page }) {
                 <Image
                     src={p.coverImage}
                     alt={p.title}
-                    width={['full', 'full', 256]}
-                    height={['full', 'full', 192]}
+                    width={256}
+                    height={192}
+                    display={['none', 'none', 'block']}
                     borderRadius={4}
                 />
                 <Flex w="full" pl={[0, 0, 8]} mt={[4, 4, 0]} direction="column">

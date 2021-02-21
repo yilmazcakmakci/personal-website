@@ -7,6 +7,15 @@ const theme = extendTheme({
             baseStyle: {
                 color: 'gray.400'
             }
+        },
+        Heading: {
+            variants: {
+                markdown: {
+                    color: 'teal.400',
+                    pt: 8,
+                    pb: 4
+                }
+            }
         }
     },
     breakpoints: createBreakpoints({
