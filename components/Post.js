@@ -35,7 +35,7 @@ export default function Projects({ p, page }) {
                             }
                         </HStack> */}
                     </Flex>
-                    <Text display="block" as="i" fontSize={12}>{formatDate(p.date)} {p.content && `· ${readTime(p.content)} min read`}</Text>
+                    <Text display="block" as="i" fontSize={12}>{formatDate(p.date)} {p.page === 'articles' && `· ${readTime(p.content)} min read`}</Text>
                     <Text mt={[4, 4, 'auto']} fontSize={16} noOfLines={2}>{p.excerpt}</Text>
                 </Flex>
             </Link>

@@ -12,7 +12,7 @@ const Image = ({ src, alt, title }) => {
     return (
         <VStack my={12} spacing={2}>
             <ChImage src={src} alt={alt} />
-            <Text fontSize="sm" align="center">{title}</Text>
+            {title && <Text fontSize="sm" align="center">{title}</Text>}
         </VStack>
     )
 }
@@ -81,7 +81,7 @@ const renderers = {
     listeItem: ({ children }) => <ListItem children={children} />,
     paragraph: ({ children }) => <Text children={children} py={4} as="span" d="block" />,
     inlineCode: ({ children }) => <Code colorScheme="teal" fontFamily="body" px={2} borderRadius={6} children={children} />,
-    link: ({ children }) => <Link color="teal.400" children={children} />,
+    link: ({ children, href, target }) => <Link color="teal.400" children={children} href={href} target={target} />,
     thematicBreak: Divider,
     code: CodeBlock,
     text: emojiSupport,
