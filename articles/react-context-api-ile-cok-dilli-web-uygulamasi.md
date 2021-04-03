@@ -1,9 +1,3 @@
----
-title: 'React Context API ile Çok Dilli Web Uygulaması'
-excerpt: 'React Context APIın çok dilli bir web uygulaması geliştirilirken nasıl kullanılabileceğini açıkladığım bir yazı.'
-coverImage: 'https://res.cloudinary.com/valkyrja/image/upload/v1613850297/Articles/react-context-api-ile-cok-dilli-web-uygulamasi/blogpost_1.svg'
-date: '2020-04-14T21:00:00.000Z'
----
 Bu yazıda sizlere React’e Hooks özelliğinin de eklenmesiyle daha fazla öne çıkmaya başlayan Context API ile web uygulamalarımızı çok fazla uğraşa girmeden nasıl birden fazla dili destekler hale getirebileceğimizden bahsedeceğim.
 
 ## Spoiler

@@ -1,15 +1,15 @@
 import { VStack } from '@chakra-ui/react'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import { getAllPosts } from '../../utils/getArticles'
+import Table from '../../utils/airtable'
 
 export default function Projects({ projects }) {
     return (
         <Layout>
-            <VStack mt={12} spacing={20}>
+            <VStack mt={12} spacing={20} mx='auto'>
                 {
                     projects.map(p => (
-                        <Post p={p} page='projects' />
+                        <Post key={p.slug} p={p} page='projects' />
                     ))
                 }
             </VStack>
@@ -18,17 +18,8 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-    const projects = getAllPosts(
-        [
-            'title',
-            'excerpt',
-            'date',
-            'coverImage',
-            'slug',
-            'content'
-        ],
-        'projects'
-    )
+    const table = new Table('Projects')
+    const projects = await table.getAll()
 
     return {
         props: { projects }

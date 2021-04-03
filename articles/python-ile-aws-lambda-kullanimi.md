@@ -1,9 +1,3 @@
----
-title: 'Python ile AWS Lambda Kullanımı'
-excerpt: 'Basit bir Python foknsiyonunun AWS üzerinde çalıştırılması.'
-coverImage: 'https://res.cloudinary.com/valkyrja/image/upload/v1613850470/Articles/python-ile-aws-lambda-kullanimi/blogpost_2.svg'
-date: '2020-02-07T21:00:00.000Z'
----
 Bu yazıda sizlere özellikle son zamanlarda karşımıza çıkmaya başlayan *_‘serverless’_* teknolojisinden ve AWS Lambda’nın python dili ile kullanımından bahsedeceğim.Bu yazıyı yazmaya karar vermedeki temel motivasyonum konunun kod tarafı hakkında Türkçe kaynakların sınırlı olması oldu.
 
 ![Aws Lambda Logo](https://res.cloudinary.com/valkyrja/image/upload/v1609367739/Articles/python-ile-aws-lambda-kullanimi/thumbnail.png "Aws Lambda Logo")

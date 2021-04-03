@@ -1,18 +1,18 @@
 import Airtable from 'airtable'
 
 export default class Table {
-    
+
     constructor(table) {
         this.base = new Airtable({
             apiKey: process.env.NEXT_PUBLIC_API_KEY
         }).base(process.env.NEXT_PUBLIC_BASE)
-        
+
         this.table = this.base(table)
     }
 
     async getAll() {
         const data = await this.table.select({
-            sort: [{field: 'xdate',direction: 'desc'}]
+            sort: [{ field: 'xdate', direction: 'desc' }]
         }).all()
 
         const clearedData = this.clearData(data)
@@ -20,12 +20,14 @@ export default class Table {
         return clearedData.filter(r => r.done)
     }
 
-    async getById(id) {
+    async getBySlug(slug) {
         const data = await this.table.select({
-            filterByFormula: `({id} = '${id}')`
+            filterByFormula: `({slug} = '${slug}')`
         }).all()
 
-        return data
+        const clearedData = this.clearData(data)
+        
+        return clearedData[0]
     }
 
     clearData(records) {

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start"
   },
@@ -15,14 +15,12 @@
     "dayjs": "^1.9.6",
     "emoji-dictionary": "^1.0.11",
     "framer-motion": "^3.2.0",
-    "gray-matter": "^4.0.2",
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
     "react-markdown": "^5.0.3",
     "react-syntax-highlighter": "^15.4.3",
-    "remark-gfm": "^1.0.0",
-    "slug": "^4.0.2"
+    "remark-gfm": "^1.0.0"
   }
 }

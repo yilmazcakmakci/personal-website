@@ -1,34 +1,32 @@
-import { getPostBySlug, getAllPosts } from '../../utils/getArticles'
 import Markdown from '../../components/Markdown'
 import Layout from '../../components/Layout'
-import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Divider, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import formatDate from '../../utils/format-date'
 import readTime from '../../utils/readtime'
+import Table from '../../utils/airtable'
 
-export default function ProjectDetail({ project: { title, date, content, github_link } }) {
+
+export default function ProjectDetail({ project }) {
+
+    const { title, date, content, github_url } = project
+
     return (
         <Layout>
-            <Box px={4}>
-                title: {title}
-                github: {github_link}
+            <Box px={4} mx='auto'>
+                <Box>
+                    <Heading>{title}</Heading>
+                </Box>
+                <Divider my={8} />
                 <Markdown content={content} />
             </Box>
         </Layout>
     )
 }
 
+const table = new Table('Projects')
+
 export async function getStaticProps({ params }) {
-    const project = getPostBySlug(params.slug, [
-        'title',
-        'date',
-        'slug',
-        'author',
-        'content',
-        'coverImage',
-        'github_link'
-    ],
-        'projects'
-    )
+    const project = await table.getBySlug(params.slug)
 
     return {
         props: { project }
@@ -36,16 +34,15 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const posts = getAllPosts(['slug'], 'projects')
+
+    const projects = await table.getAll()
 
     return {
-        paths: posts.map((post) => {
-            return {
-                params: {
-                    slug: post.slug,
-                },
+        paths: projects.map((project) => ({
+            params: {
+                slug: project.slug
             }
-        }),
+        })),
         fallback: false,
     }
 }
