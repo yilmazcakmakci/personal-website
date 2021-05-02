@@ -43,3 +43,7 @@ iframe {
     height: 400px;
     margin: 3rem 0;
 }
+
+*:focus {
+    outline: none;
+}

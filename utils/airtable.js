@@ -26,14 +26,14 @@ export default class Table {
         }).all()
 
         const clearedData = this.clearData(data)
-        
+
         return clearedData[0]
     }
 
     clearData(records) {
         return records.map(record => ({
             ...record.fields,
-            media: record.fields.media ? record.fields.media[0].url : null
+            media: record.fields.media ? record.fields.media.map(m => m.url) : null
         }))
     }
 }

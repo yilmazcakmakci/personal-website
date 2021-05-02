@@ -11,18 +11,20 @@ export default function Post({ p, page }) {
                 _hover={{ backgroundColor: 'gray.800' }}
                 borderRadius={6}
                 display={['block', 'block', 'flex']}
-                p={4}
+                px={4}
+                py={8}
                 w="full"
+                bg={['gray.800', 'gray.800', 'none']}
             >
                 <Image
-                    src={p.media}
+                    src={p.media[0]}
                     alt={p.title}
                     width={256}
                     height={192}
                     display={['none', 'none', 'block']}
                     borderRadius={4}
                 />
-                <Flex w="full" pl={[0, 0, 8]} mt={[4, 4, 0]} direction="column">
+                <Flex w="full" pl={[0, 0, 8]} direction="column">
                     <Flex justify="space-between" display={['block', 'block', 'flex']}>
                         <Text fontSize={[20, 24]} fontWeight="semibold">{p.title}</Text>
                     </Flex>

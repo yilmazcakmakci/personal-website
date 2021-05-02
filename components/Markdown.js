@@ -1,17 +1,22 @@
 import React from 'react'
-import { Code, Heading, List, ListItem, Image as ChImage, Text, VStack, Box, HStack, Link } from '@chakra-ui/react'
+import { Code, Heading, List, ListItem, Image as ChImage, Text, VStack, Box, HStack, Link, useMediaQuery } from '@chakra-ui/react'
 import ReactMarkdown from 'react-markdown/with-html'
 import gfm from 'remark-gfm'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import emoji from 'emoji-dictionary'
+import Zoom from 'react-medium-image-zoom'
 
 const emojiSupport = text => text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name))
 
 const Image = ({ src, alt, title }) => {
+    const [isDesktop] = useMediaQuery("(min-width: 1200px)")
+
     return (
         <VStack my={12} spacing={2}>
-            <ChImage src={src} alt={alt} />
+            <Zoom zoomMargin={isDesktop ? 300 : 0} overlayBgColorStart='#0D0F16' overlayBgColorEnd="#0D0F16">
+                <ChImage src={src} alt={alt} />
+            </Zoom>
             {title && <Text fontSize="sm" align="center">{title}</Text>}
         </VStack>
     )

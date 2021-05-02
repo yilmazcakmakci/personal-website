@@ -4,16 +4,20 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 const menu = [
-    { name: 'About Me', url: '/about' },
-    { name: 'Articles', url: '/articles' },
+    // { name: 'About Me', url: '/about' },
     { name: 'Home', url: '/' },
+    { name: 'Articles', url: '/articles' },
     { name: 'Projects', url: '/projects' },
 ]
 
 export default function Home() {
 
     const router = useRouter()
-    const currentPage = menu.find(({ url }) => router.pathname.includes(url))
+    const currentPage = () => {
+        if (router.pathname === '/') return menu[0]
+
+        return menu.find(({ url }) => router.pathname.includes(url) && url !== '/')
+    }
 
     return (
         <Flex as="nav" py={[5, 5, 10]} justify="space-between" align="center">
@@ -29,7 +33,7 @@ export default function Home() {
             </NextLink>
 
             <Menu>
-                <MenuButton as={Button} fontSize={14} rightIcon={<RiArrowDownSLine />}>{currentPage?.name}</MenuButton>
+                <MenuButton as={Button} fontSize={14} rightIcon={<RiArrowDownSLine />}>{currentPage()?.name}</MenuButton>
                 <MenuList>
                     {
                         menu.map(({ name, url }) => {
