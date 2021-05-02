@@ -6,7 +6,7 @@ import Table from '../../utils/airtable'
 export default function Articles({ articles }) {
 
     return (
-        <Layout>
+        <Layout title="Articles" description="Aciklama Yazilar">
             <VStack mt={12} spacing={20} mx="auto">
                 {
                     articles.map(p => (

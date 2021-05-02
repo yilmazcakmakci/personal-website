@@ -5,7 +5,7 @@ import { Flex, Heading, Box, Text, Center, Link } from '@chakra-ui/react'
 
 export default function Home() {
     return (
-        <Layout>
+        <Layout title="Anasayfa" description="Aciklama Anasayfa">
             <Flex px={4} mt={[16, 20, 48]} direction={{ base: 'column-reverse', md: 'row' }}>
                 <Box w={{ md: '60%' }}>
                     <Heading color="gray.200" as="h1">Hi, I'm Yılmaz</Heading>

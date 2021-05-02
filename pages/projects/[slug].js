@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout'
-import { Box, Divider, Flex, Heading, Image, Text, Button, HStack, Link, useMediaQuery } from '@chakra-ui/react'
-import formatDate from '../../utils/format-date'
+import { Box, Heading, Text, Button, HStack, Link } from '@chakra-ui/react'
 import Table from '../../utils/airtable'
 import { FaGithub } from 'react-icons/fa'
 import { CgWebsite } from 'react-icons/cg'
@@ -11,7 +10,7 @@ export default function ProjectDetail({ project }) {
     const buttonStyles = { textDecoration: 'none', bg: 'teal.400', color: 'black' }
 
     return (
-        <Layout>
+        <Layout title={title} description={description} image={media[0]}>
             <Box px={4} mx='auto'>
                 <Heading>{title}</Heading>
                 <Text mt="8">{description}</Text>
