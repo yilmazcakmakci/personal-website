@@ -9,7 +9,7 @@ import getContent from '../../utils/get-content'
 
 export default function ArticleDetail({ article: { title, date, content, description, media } }) {
     return (
-        <Layout title={title} description={description} image={media[0]}>
+        <Layout title={title} description={description} image={media[1]}>
             <Box px={4} mx='auto'>
                 <Box mb={8}>
                     <Heading color='gray.200' size='xl' mb={4}>{title}</Heading>
