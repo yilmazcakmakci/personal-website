@@ -29,6 +29,7 @@ export default function Home() {
 
                 <Center w={{ md: '40%' }} justifyContent={{ sm: 'flex-start', md: 'flex-end' }} mb={[6, 6, 0]}>
                     <Image
+                        priority={true}
                         src="/me.png"
                         alt="Picture of the author"
                         width={200}

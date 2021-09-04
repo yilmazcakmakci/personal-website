@@ -24,7 +24,7 @@ const Image = ({ src, alt, title }) => {
 
 const Blockquote = ({ children }) => {
     return (
-        <Text as="blockquote" pl={8} borderLeft="4px" borderColor="teal.400" color="red.200">{children}</Text>
+        <Text as="blockquote" my={8} pl={8} borderLeft="4px" borderColor="teal.400" color="red.200">{children}</Text>
     )
 }
 
