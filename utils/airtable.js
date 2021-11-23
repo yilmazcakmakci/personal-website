@@ -33,6 +33,7 @@ export default class Table {
     clearData(records) {
         return records.map(record => ({
             ...record.fields,
+            date: record.fields.xdate,
             media: record.fields.media ? record.fields.media.map(m => m.url) : null
         }))
     }
