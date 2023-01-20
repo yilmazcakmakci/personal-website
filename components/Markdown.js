@@ -3,7 +3,7 @@ import { Code, Heading, List, ListItem, Image as ChImage, Text, VStack, Box, HSt
 import ReactMarkdown from 'react-markdown/with-html'
 import gfm from 'remark-gfm'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import emoji from 'emoji-dictionary'
 import Zoom from 'react-medium-image-zoom'
 
@@ -24,7 +24,7 @@ const Image = ({ src, alt, title }) => {
 
 const Blockquote = ({ children }) => {
     return (
-        <Text as="blockquote" my={8} pl={8} borderLeft="4px" borderColor="teal.400" color="red.200">{children}</Text>
+        <Text as="blockquote" my={8} pl={8} borderLeft="4px" borderColor="cyan.600" color="red.200">{children}</Text>
     )
 }
 
@@ -64,7 +64,7 @@ const CodeBlock = ({ language, value }) => {
     return (
         <SyntaxHighlighter
             language={language}
-            style={nord}
+            style={nightOwl}
             customStyle={{
                 borderRadius: 10,
                 padding: '1.5em',
@@ -82,11 +82,11 @@ const CodeBlock = ({ language, value }) => {
 }
 
 const renderers = {
-    list: ({ children }) => <List px={8} color="gray.400" styleType="circle" spacing={8} children={children} />,
+    list: ({ children }) => <List px={8} color="gray.300" styleType="circle" spacing={8} children={children} />,
     listeItem: ({ children }) => <ListItem children={children} />,
     paragraph: ({ children }) => <Text children={children} py={4} as="span" d="block" />,
-    inlineCode: ({ children }) => <Code colorScheme="teal" fontFamily="body" px={2} borderRadius={6} children={children} />,
-    link: ({ children, href, target }) => <Link color="teal.400" children={children} href={href} target={target} />,
+    inlineCode: ({ children }) => <Code colorScheme="cyan" fontFamily="body" px={2} borderRadius={6} children={children} />,
+    link: ({ children, href, target }) => <Link color="cyan.600" children={children} href={href} target={target} />,
     thematicBreak: Divider,
     code: CodeBlock,
     text: emojiSupport,

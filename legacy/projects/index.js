@@ -5,7 +5,7 @@ import Table from '../../utils/airtable'
 
 export default function Projects({ projects }) {
     return (
-        <Layout title="Projects" description="Aciklama Projeler">
+        <Layout title="Projects" description="Projelerim">
             <VStack mt={12} spacing={20} mx='auto'>
                 {
                     projects.map(p => (

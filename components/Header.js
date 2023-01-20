@@ -7,7 +7,7 @@ const menu = [
     // { name: 'About Me', url: '/about' },
     { name: 'Home', url: '/' },
     { name: 'Articles', url: '/articles' },
-    { name: 'Projects', url: '/projects' },
+    // { name: 'Projects', url: '/projects' },
 ]
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
             <NextLink href="/" passHref>
                 <Link
                     _focus={{ boxShadow: 'none' }}
-                    _hover={{ color: 'teal.400' }}
+                    _hover={{ color: 'cyan.600' }}
                     fontSize={14}
                     fontFamily="mono"
                     pl={4}>

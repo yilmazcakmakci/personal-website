@@ -21,7 +21,6 @@ const Layout = ({ children, title, description, image }) => {
 
     const pageTitle = `Yılmaz Çakmakçı • ${title}`
     const url = 'https://yilmazc.com'
-    const pageImage = image ? image : `${url}/me.png`
 
     return (
         <>
@@ -36,14 +35,13 @@ const Layout = ({ children, title, description, image }) => {
                 <meta property="og:url" content={url} />
                 <meta property="og:title" content={pageTitle} />
                 <meta property="og:description" content={description} />
-                <meta property="og:image" content={pageImage} />
+
 
                 {/* <!-- Twitter --> */}
                 <meta property="twitter:card" content="summary" />
                 <meta property="twitter:url" content={url} />
                 <meta property="twitter:title" content={pageTitle} />
                 <meta property="twitter:description" content={description} />
-                <meta property="twitter:image" content={pageImage} />
 
             </Head>
             <Container maxW="3xl" minH="100vh" pb={32}>
@@ -52,8 +50,8 @@ const Layout = ({ children, title, description, image }) => {
                     isDesktop ? (
                         <motion.div
                             transition={config}
-                            initial={{ skewX: '10deg', opacity: 0, transformOrigin: 'top left' }}
-                            animate={{ skewX: '0deg', opacity: 1 }}
+                            initial={{ opacity: 0, }}
+                            animate={{ opacity: 1 }}
                             exit={{ x: 0, opacity: 0 }}
                         >
                             {children}

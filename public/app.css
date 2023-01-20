@@ -1,18 +1,29 @@
+::-moz-selection {
+    color: #0D0F16;
+    background: var(--chakra-colors-gray-100);
+}
+
+::selection {
+    color: #0D0F16;
+    background: var(--chakra-colors-gray-100);
+}
+
 table {
-    padding: 0; 
+    padding: 0;
     border-spacing: 0;
     border-collapse: collapse;
     border-style: hidden;
 }
 
-thead, tbody {
+thead,
+tbody {
     padding: 20px;
 }
-    
+
 tr {
     background-color: #1b1d23;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
 tr th {
@@ -20,22 +31,24 @@ tr th {
     border: 1px solid #2b2d31;
     text-align: left;
     margin: 0;
-    padding: 10px 15px; 
+    padding: 10px 15px;
 }
 
 tr td {
     border: 1px solid #2b2d31;
     text-align: left;
     margin: 0;
-    padding: 10px 15px; 
+    padding: 10px 15px;
 }
 
-tr th :first-child, tr td :first-child {
-    margin-top: 0; 
+tr th :first-child,
+tr td :first-child {
+    margin-top: 0;
 }
 
-tr th :last-child, tr td :last-child {
-    margin-bottom: 0; 
+tr th :last-child,
+tr td :last-child {
+    margin-bottom: 0;
 }
 
 iframe {

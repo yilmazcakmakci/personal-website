@@ -7,7 +7,7 @@ import { CgWebsite } from 'react-icons/cg'
 export default function ProjectDetail({ project }) {
 
     const { title, date, description, github_link, used_techs, project_link, media } = project
-    const buttonStyles = { textDecoration: 'none', bg: 'teal.400', color: 'black' }
+    const buttonStyles = { textDecoration: 'none', bg: 'cyan.600', color: 'black' }
 
     return (
         <Layout title={title} description={description} image={media[0]}>
@@ -15,7 +15,7 @@ export default function ProjectDetail({ project }) {
                 <Heading>{title}</Heading>
                 <Text mt="8">{description}</Text>
                 <Box mt="8">
-                    <Text as="span" color="teal.400" fontWeight="600">Kullanılan Teknolojiler: </Text>
+                    <Text as="span" color="cyan.600" fontWeight="600">Kullanılan Teknolojiler: </Text>
                     <Text as="span">{used_techs.join(', ')}</Text>
                 </Box>
 

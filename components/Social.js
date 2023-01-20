@@ -37,7 +37,7 @@ const Social = () => {
         <HStack spacing={4} mt={2}>
             {
                 socialMediaLinks.map(({ name, url, icon }) => (
-                    <IconButton key={name} borderRadius="full" _hover={{color:'teal.400'}} bg="gray.800" title={name} as={Link} isExternal href={url}>
+                    <IconButton key={name} borderRadius="full" _hover={{color:'cyan.600'}} bg="gray.800" title={name} as={Link} isExternal href={url}>
                         {icon}
                     </IconButton>
                 ))

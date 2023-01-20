@@ -5,13 +5,13 @@ const theme = extendTheme({
     components: {
         Text: {
             baseStyle: {
-                color: 'gray.400'
+                color: 'gray.300'
             }
         },
         Heading: {
             variants: {
                 markdown: {
-                    color: 'teal.400',
+                    color: 'cyan.600',
                     pt: 8,
                     pb: 4
                 }
