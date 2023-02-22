@@ -1,4 +1,12 @@
-import { Flex, Link, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
+import {
+    Flex,
+    Link,
+    Button,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+} from '@chakra-ui/react'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,12 +19,13 @@ const menu = [
 ]
 
 export default function Home() {
-
     const router = useRouter()
     const currentPage = () => {
         if (router.pathname === '/') return menu[0]
 
-        return menu.find(({ url }) => router.pathname.includes(url) && url !== '/')
+        return menu.find(
+            ({ url }) => router.pathname.includes(url) && url !== '/'
+        )
     }
 
     return (
@@ -27,25 +36,37 @@ export default function Home() {
                     _hover={{ color: 'cyan.600' }}
                     fontSize={14}
                     fontFamily="mono"
-                    pl={4}>
+                    pl={4}
+                >
                     YILMAZ ÇAKMAKÇI
                 </Link>
             </NextLink>
 
             <Menu>
-                <MenuButton as={Button} fontSize={14} rightIcon={<RiArrowDownSLine />}>{currentPage()?.name}</MenuButton>
+                <MenuButton
+                    as={Button}
+                    fontSize={14}
+                    rightIcon={<RiArrowDownSLine />}
+                >
+                    {currentPage()?.name}
+                </MenuButton>
                 <MenuList>
-                    {
-                        menu.map(({ name, url }) => {
-                            return (
-                                <MenuItem fontSize={14} key={url} p={0}>
-                                    <NextLink href={url} passHref>
-                                        <Link px={3} py={2} w="full" _hover={{ textDecoration: 'none' }}>{name}</Link>
-                                    </NextLink>
-                                </MenuItem>
-                            )
-                        })
-                    }
+                    {menu.map(({ name, url }) => {
+                        return (
+                            <MenuItem fontSize={14} key={url} p={0}>
+                                <NextLink href={url} passHref>
+                                    <Link
+                                        px={3}
+                                        py={2}
+                                        w="full"
+                                        _hover={{ textDecoration: 'none' }}
+                                    >
+                                        {name}
+                                    </Link>
+                                </NextLink>
+                            </MenuItem>
+                        )
+                    })}
                 </MenuList>
             </Menu>
         </Flex>

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import TagManager from 'react-gtm-module';
+import { useEffect } from 'react'
+import TagManager from 'react-gtm-module'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../theme'
 import '../public/app.css'

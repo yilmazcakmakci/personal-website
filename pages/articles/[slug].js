@@ -6,14 +6,19 @@ import readTime from '../../utils/readtime'
 import Table from '../../utils/airtable'
 import getContent from '../../utils/get-content'
 
-
-export default function ArticleDetail({ article: { title, date, content, description, media } }) {
+export default function ArticleDetail({
+    article: { title, date, content, description, media },
+}) {
     return (
         <Layout title={title} description={description}>
-            <Box px={4} mx='auto'>
+            <Box px={4} mx="auto">
                 <Box mb={8}>
-                    <Heading color='gray.200' size='xl' mb={4}>{title}</Heading>
-                    <Text display="block" as="i" fontSize={12}>{formatDate(date)} {`· ${readTime(content)} min read`}</Text>
+                    <Heading color="gray.200" size="xl" mb={4}>
+                        {title}
+                    </Heading>
+                    <Text display="block" as="i" fontSize={12}>
+                        {formatDate(date)} {`· ${readTime(content)} min read`}
+                    </Text>
                 </Box>
                 <Markdown content={content} />
             </Box>
@@ -29,8 +34,8 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            article: { ...article, content }
-        }
+            article: { ...article, content },
+        },
     }
 }
 
@@ -38,7 +43,7 @@ export async function getStaticPaths() {
     const articles = await table.getAll()
 
     return {
-        paths: articles.map(article => {
+        paths: articles.map((article) => {
             return {
                 params: {
                     slug: article.slug,

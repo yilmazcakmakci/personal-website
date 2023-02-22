@@ -1,10 +1,10 @@
 ::-moz-selection {
-    color: #0D0F16;
+    color: #0d0f16;
     background: var(--chakra-colors-gray-100);
 }
 
 ::selection {
-    color: #0D0F16;
+    color: #0d0f16;
     background: var(--chakra-colors-gray-100);
 }
 
