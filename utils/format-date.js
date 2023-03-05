@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 
-const formatDate = (date) => {
-    return dayjs(new Date(date)).format('MMM D, YYYY')
+const formatDate = (date, format = 'MMM D, YYYY') => {
+    return dayjs(new Date(date)).format(format)
 }
 
 export default formatDate

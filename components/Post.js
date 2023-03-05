@@ -18,26 +18,44 @@ export default function Post({ p, page }) {
                 w="full"
                 bg={['gray.800', 'gray.800', 'none']}
             >
+                {isProject && (
+                    <Image
+                        src={p.media[0]}
+                        alt={p.title}
+                        width={256}
+                        height={192}
+                        display={['none', 'none', 'block']}
+                        borderRadius={4}
+                    />
+                )}
 
-                {
-                    isProject && (
-                        <Image
-                            src={p.media[0]}
-                            alt={p.title}
-                            width={256}
-                            height={192}
-                            display={['none', 'none', 'block']}
-                            borderRadius={4}
-                        />
-                    )
-                }
-
-                <Flex w="full" pl={[0, 0, isProject ? 8 : 0]} direction="column">
-                    <Flex justify="space-between" display={['block', 'block', 'flex']}>
-                        <Text color="cyan.600" fontSize={[20, 24]} fontWeight="semibold">{p.title}</Text>
+                <Flex
+                    w="full"
+                    pl={[0, 0, isProject ? 8 : 0]}
+                    direction="column"
+                >
+                    <Flex
+                        justify="space-between"
+                        display={['block', 'block', 'flex']}
+                    >
+                        <Text
+                            color="cyan.600"
+                            fontSize={[20, 24]}
+                            fontWeight="semibold"
+                        >
+                            {p.title}
+                        </Text>
                     </Flex>
-                    <Text display="block" as="i" fontSize={12}>{formatDate(p.date)}</Text>
-                    <Text mt={[4, 4, isProject ? 'auto' : 4]} fontSize={16} noOfLines={2}>{p.description}</Text>
+                    <Text display="block" as="i" fontSize={12}>
+                        {formatDate(p.date)}
+                    </Text>
+                    <Text
+                        mt={[4, 4, isProject ? 'auto' : 4]}
+                        fontSize={16}
+                        noOfLines={2}
+                    >
+                        {p.description}
+                    </Text>
                 </Flex>
             </Link>
         </NextLink>
