@@ -27,7 +27,7 @@ export default async function handler(req, res) {
                 project: projectName,
             }
 
-            table.create(payload)
+            await table.create(payload)
             res.json({ message: 'Record saved.' })
         }
     } catch (error) {
