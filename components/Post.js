@@ -1,62 +1,57 @@
-import { Link, Text, Flex, Image } from '@chakra-ui/react'
+import { Link, Text, Flex, Box } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import formatDate from '../utils/format-date'
 
-export default function Post({ p, page }) {
-    const link = `/${page}/${p.slug}`
-    const isProject = page === 'projects'
+export default function Post({ p }) {
+    const link = `/articles/${p.slug}`
 
     return (
         <NextLink href={link} passHref>
             <Link
+                _hover={{ textDecoration: 'none' }}
                 _focus={{ boxShadow: 'none' }}
-                _hover={{ backgroundColor: 'gray.800', color: 'cyan.600' }}
-                borderRadius={6}
-                display={['block', 'block', 'flex']}
-                px={4}
-                py={8}
-                w="full"
-                bg={['gray.800', 'gray.800', 'none']}
+                display="block"
+                role="group"
             >
-                {isProject && (
-                    <Image
-                        src={p.media[0]}
-                        alt={p.title}
-                        width={256}
-                        height={192}
-                        display={['none', 'none', 'block']}
-                        borderRadius={4}
-                    />
-                )}
-
-                <Flex
-                    w="full"
-                    pl={[0, 0, isProject ? 8 : 0]}
-                    direction="column"
+                <Box
+                    borderBottom="1px"
+                    borderColor="gray.800"
+                    pb={8}
+                    transition="all 0.2s"
+                    _groupHover={{
+                        borderColor: 'gray.700'
+                    }}
                 >
-                    <Flex
-                        justify="space-between"
-                        display={['block', 'block', 'flex']}
-                    >
+                    <Flex direction="column" gap={3}>
                         <Text
-                            color="cyan.600"
-                            fontSize={[20, 24]}
-                            fontWeight="semibold"
+                            color="cyan.400"
+                            fontSize="xl"
+                            fontWeight="medium"
+                            transition="all 0.2s"
                         >
                             {p.title}
                         </Text>
+
+                        <Text
+                            color="gray.400"
+                            fontSize="md"
+                            lineHeight="tall"
+                            transition="all 0.2s"
+                            _groupHover={{ color: 'gray.300' }}
+                        >
+                            {p.description}
+                        </Text>
+
+                        <Text
+                            color="gray.500"
+                            fontSize="sm"
+                            transition="all 0.2s"
+                            _groupHover={{ color: 'gray.400' }}
+                        >
+                            {formatDate(p.date)}
+                        </Text>
                     </Flex>
-                    <Text display="block" as="i" fontSize={12}>
-                        {formatDate(p.date)}
-                    </Text>
-                    <Text
-                        mt={[4, 4, isProject ? 'auto' : 4]}
-                        fontSize={16}
-                        noOfLines={2}
-                    >
-                        {p.description}
-                    </Text>
-                </Flex>
+                </Box>
             </Link>
         </NextLink>
     )
