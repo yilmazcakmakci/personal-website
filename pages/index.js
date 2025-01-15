@@ -16,14 +16,13 @@ export default function Home() {
                         Hi, I'm Yılmaz
                     </Heading>
                     <Text color="gray.300" mt={6}>
-                        I am a passionate software developer from Istanbul. I
-                        love learning new things and try them on a project. I
-                        always try to keep myself up to date and share what I
-                        learned.
+                        I am a passionate software developer from Istanbul.
+                        I am dedicated to continuously growing as a developer
+                        and building projects that bring value.
                     </Text>
                     <Text mt={2} color="gray.300">
                         Currently, I am working as a
-                        <Text as="i"> frontend developer</Text> at
+                        <Text as="i"> Frontend Developer</Text> at
                         <Link
                             href="https://www.hybrone.com/"
                             _hover={{ color: 'cyan.600' }}
@@ -50,7 +49,7 @@ export default function Home() {
                     mb={[6, 6, 0]}
                 >
                     <Image
-                        src="/me.png"
+                        src="/me-last.png"
                         alt="Picture of the author"
                         width={200}
                         height={200}

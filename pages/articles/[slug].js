@@ -3,8 +3,7 @@ import Layout from '../../components/Layout'
 import { Box, Heading, Text } from '@chakra-ui/react'
 import formatDate from '../../utils/format-date'
 import readTime from '../../utils/readtime'
-import Table from '../../utils/airtable'
-import getContent from '../../utils/get-content'
+import { getAllArticles, getArticleBySlug } from '../../utils/get-content'
 
 export default function ArticleDetail({
     article: { title, date, content, description, media },
@@ -26,30 +25,25 @@ export default function ArticleDetail({
     )
 }
 
-const table = new Table('Articles')
-
 export async function getStaticProps({ params }) {
-    const article = await table.getBySlug(params.slug)
-    const content = await getContent(params.slug)
+    const article = getArticleBySlug(params.slug)
 
     return {
         props: {
-            article: { ...article, content },
+            article,
         },
     }
 }
 
 export async function getStaticPaths() {
-    const articles = await table.getAll()
+    const articles = getAllArticles()
 
     return {
-        paths: articles.map((article) => {
-            return {
-                params: {
-                    slug: article.slug,
-                },
-            }
-        }),
+        paths: articles.map((article) => ({
+            params: {
+                slug: article.slug,
+            },
+        })),
         fallback: false,
     }
 }

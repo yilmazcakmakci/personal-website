@@ -6,9 +6,9 @@ const size = 16
 
 const socialMediaLinks = [
     {
-        name: 'twitter',
-        icon: <FaTwitter size={size} />,
-        url: 'https://twitter.com/yilmazdev',
+        name: 'github',
+        icon: <FaGithub size={size} />,
+        url: 'https://github.com/yilmazcakmakci',
     },
     {
         name: 'linkedin',
@@ -16,19 +16,14 @@ const socialMediaLinks = [
         url: 'https://www.linkedin.com/in/yilmazcakmakci/',
     },
     {
-        name: 'medium',
-        icon: <FaMediumM size={size} />,
-        url: 'https://medium.com/@yilmazcakmakci',
-    },
-    {
-        name: 'github',
-        icon: <FaGithub size={size} />,
-        url: 'https://github.com/yilmazcakmakci',
+        name: 'twitter',
+        icon: <FaTwitter size={size} />,
+        url: 'https://twitter.com/yilmazdev',
     },
     {
         name: 'mail',
         icon: <GrMail size={size} />,
-        url: 'mailto:cakmakcy@gmail.com',
+        url: 'mailto:me@yilmazc.com',
     },
 ]
 

@@ -1,3 +1,9 @@
+---
+title: "HTTP İsteklerini Hook ile Yönetmek"
+description: "Component içindeki HTTP isteklerini ve state yönetimini basitleştirmek için bir custom hook nasıl yazılır?"
+date: "2021.09.04"
+---
+
 ## Giriş
 
 Frontend geliştirirken belki de en önemli noktalardan biri yapmış olduğumuz http istekleri. Component içerisindeki mantıksal kısmın büyük bir çoğunluğu API'a http isteğini yapmak, kullanıcıya cevap beklenirken yükleniyor anlamına gelen bir gösterge sunmak ve gelen cevabı çeşitli şekillerde kullanmaktan oluşuyor. 

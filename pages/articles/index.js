@@ -1,7 +1,7 @@
 import { VStack } from '@chakra-ui/react'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import Table from '../../utils/airtable'
+import { getAllArticles } from '../../utils/get-content'
 
 export default function Articles({ articles }) {
     return (
@@ -16,8 +16,7 @@ export default function Articles({ articles }) {
 }
 
 export async function getStaticProps() {
-    const table = new Table('Articles')
-    const articles = await table.getAll()
+    const articles = getAllArticles()
 
     return {
         props: { articles },
