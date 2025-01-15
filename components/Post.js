@@ -2,7 +2,7 @@ import { Link, Text, Flex, Box } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import formatDate from '../utils/format-date'
 
-export default function Post({ p }) {
+export default function Post({ p, isLast }) {
     const link = `/articles/${p.slug}`
 
     return (
@@ -14,7 +14,7 @@ export default function Post({ p }) {
                 role="group"
             >
                 <Box
-                    borderBottom="1px"
+                    borderBottom={!isLast && "1px"}
                     borderColor="gray.800"
                     pb={8}
                     transition="all 0.2s"

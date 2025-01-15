@@ -8,8 +8,13 @@ export default function Articles({ articles }) {
         <Layout title="Articles" description="Yazılarım">
             <Container maxW="container.md" mt={16}>
                 <VStack spacing={8} align="stretch">
-                    {articles.map((article) => (
-                        <Post key={article.slug} p={article} page="articles" />
+                    {articles.map((article, index) => (
+                        <Post
+                            key={article.slug}
+                            p={article}
+                            page="articles"
+                            isLast={index === articles.length - 1}
+                        />
                     ))}
                 </VStack>
             </Container>
