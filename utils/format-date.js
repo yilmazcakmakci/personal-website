@@ -4,8 +4,11 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 
 const formatDate = (date) => {
-    const formattedDate = dayjs(new Date(date)).format('MMM D, YYYY')
-    const relativeDate = dayjs(new Date(date)).fromNow()
+    // YYYY.MM.DD formatını YYYY-MM-DD formatına çevir
+    const standardDate = date.replace(/\./g, '-')
+    const parsedDate = dayjs(standardDate)
+    const formattedDate = parsedDate.format('MMM D, YYYY')
+    const relativeDate = parsedDate.fromNow()
     
     return `${formattedDate} (${relativeDate})`
 }

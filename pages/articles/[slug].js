@@ -4,6 +4,7 @@ import { Box, Heading, Text } from '@chakra-ui/react'
 import formatDate from '../../utils/format-date'
 import readTime from '../../utils/readtime'
 import { getAllArticles, getArticleBySlug } from '../../utils/get-content'
+import ScrollToTop from '../../components/ScrollToTop'
 
 export default function ArticleDetail({
     article: { title, date, content, description, media },
@@ -20,6 +21,7 @@ export default function ArticleDetail({
                     </Text>
                 </Box>
                 <Markdown content={content} />
+                <ScrollToTop />
             </Box>
         </Layout>
     )
