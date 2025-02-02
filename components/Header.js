@@ -8,11 +8,13 @@ import {
     MenuItem,
     Box,
     Icon,
+    IconButton,
+    Text,
 } from '@chakra-ui/react'
-import { RiArrowDownSLine, RiHome5Line, RiArticleLine } from 'react-icons/ri'
+import { RiArrowDownSLine, RiHome5Line, RiArticleLine, RiSunLine, RiMoonLine } from 'react-icons/ri'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 const menu = [
@@ -21,10 +23,12 @@ const menu = [
 ]
 
 const MotionFlex = motion(Flex)
+const MotionIconButton = motion(IconButton)
 
 export default function Header() {
     const router = useRouter()
     const [isVisible, setIsVisible] = useState(true)
+    const [isDark, setIsDark] = useState(true)
 
     useEffect(() => {
         let lastScrollY = window.scrollY
@@ -82,38 +86,78 @@ export default function Header() {
                     </Link>
                 </NextLink>
 
-                <Menu>
-                    <MenuButton
-                        as={Button}
-                        fontSize={14}
-                        rightIcon={<RiArrowDownSLine />}
-                        leftIcon={<Icon as={currentPage()?.icon} />}
-                    >
-                        {currentPage()?.name}
-                    </MenuButton>
-                    <MenuList>
-                        {menu.map(({ name, url, icon }) => {
-                            return (
-                                <MenuItem fontSize={14} key={url} p={0}>
-                                    <NextLink href={url} passHref>
-                                        <Link
-                                            px={3}
-                                            py={2}
-                                            w="full"
-                                            display="flex"
-                                            alignItems="center"
-                                            gap={2}
-                                            _hover={{ textDecoration: 'none' }}
-                                        >
-                                            <Icon as={icon} />
-                                            {name}
-                                        </Link>
-                                    </NextLink>
-                                </MenuItem>
-                            )
-                        })}
-                    </MenuList>
-                </Menu>
+                <Flex gap={4} align="center">
+                    <Box position="relative" w="40px" h="40px">
+                        <AnimatePresence mode="wait" initial={false}>
+                            <MotionIconButton
+                                key={isDark ? "dark" : "light"}
+                                aria-label="Toggle dark mode"
+                                icon={isDark ? <RiSunLine /> : <RiMoonLine />}
+                                variant="ghost"
+                                onClick={() => setIsDark(!isDark)}
+                                position="absolute"
+                                w="40px"
+                                h="40px"
+                                _focus={{ boxShadow: 'none' }}
+                                _hover={{ color: 'cyan.600' }}
+                                _active={{ bg: 'transparent' }}
+                                initial={{ rotate: -180, opacity: 0 }}
+                                animate={{ rotate: 0, opacity: 1 }}
+                                exit={{ rotate: 180, opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </AnimatePresence>
+                    </Box>
+                    <Menu>
+                        <Box w={{ base: "40px", md: "120px" }}>
+                            <MenuButton
+                                as={Button}
+                                fontSize={14}
+                                w="full"
+                                h="40px"
+                                p={0}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
+                                <Flex
+                                    w="full"
+                                    px={{ md: 3 }}
+                                    align="center"
+                                    justify={{ base: "center", md: "space-between" }}
+                                >
+                                    <Icon as={currentPage()?.icon} boxSize={4} />
+                                    <Text display={{ base: "none", md: "block" }} mx={2} flex={1} textAlign="center">
+                                        {currentPage()?.name}
+                                    </Text>
+                                    <Icon as={RiArrowDownSLine} display={{ base: "none", md: "block" }} boxSize={4} />
+                                </Flex>
+                            </MenuButton>
+                        </Box>
+                        <MenuList minW="120px">
+                            {menu.map(({ name, url, icon }) => {
+                                return (
+                                    <MenuItem fontSize={14} key={url} p={0}>
+                                        <NextLink href={url} passHref>
+                                            <Link
+                                                px={3}
+                                                py={2}
+                                                w="full"
+                                                display="flex"
+                                                alignItems="center"
+                                                gap={2}
+                                                _hover={{ textDecoration: 'none' }}
+                                            >
+                                                <Icon as={icon} />
+                                                {name}
+                                            </Link>
+                                        </NextLink>
+                                    </MenuItem>
+                                )
+                            })}
+                        </MenuList>
+                    </Menu>
+                </Flex>
             </MotionFlex>
         </Box>
     )

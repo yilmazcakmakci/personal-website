@@ -33,6 +33,17 @@ const theme = extendTheme({
         global: {
             body: {
                 bg: '#0D0F16',
+                overflowY: 'scroll'
+            },
+            '::-webkit-scrollbar': {
+                width: '10px',
+            },
+            '::-webkit-scrollbar-track': {
+                bg: '#0D0F16',
+            },
+            '::-webkit-scrollbar-thumb': {
+                bg: 'gray.700',
+                borderRadius: 'full',
             },
         },
     },
