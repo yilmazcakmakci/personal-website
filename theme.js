@@ -1,20 +1,26 @@
 import { extendTheme } from '@chakra-ui/react'
-import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { createBreakpoints, mode } from '@chakra-ui/theme-tools'
+
+const config = {
+    initialColorMode: 'system',
+    useSystemColorMode: false,
+}
 
 const theme = extendTheme({
+    config,
     components: {
         Text: {
-            baseStyle: {
-                color: 'gray.300',
-            },
+            baseStyle: props => ({
+                color: mode('gray.800', 'gray.300')(props),
+            }),
         },
         Heading: {
             variants: {
-                markdown: {
-                    color: 'cyan.600',
+                markdown: props => ({
+                    color: mode('blue.700', 'blue.400')(props),
                     pt: 8,
                     pb: 4,
-                },
+                }),
             },
         },
     },
@@ -30,22 +36,26 @@ const theme = extendTheme({
         mono: 'Audiowide, cursive',
     },
     styles: {
-        global: {
+        global: props => ({
             body: {
-                bg: '#0D0F16',
+                bg: mode('gray.100', '#0D0F16')(props),
                 overflowY: 'scroll'
             },
             '::-webkit-scrollbar': {
                 width: '10px',
             },
             '::-webkit-scrollbar-track': {
-                bg: '#0D0F16',
+                bg: mode('gray.100', '#0D0F16')(props),
             },
             '::-webkit-scrollbar-thumb': {
-                bg: 'gray.700',
+                bg: mode('gray.200', 'gray.700')(props),
                 borderRadius: 'full',
             },
-        },
+            '::selection': {
+                bg: mode('blue.200', 'blue.800')(props),
+                color: mode('blue.900', 'white')(props),
+            },
+        }),
     },
 })
 

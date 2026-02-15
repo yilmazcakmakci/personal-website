@@ -2,6 +2,7 @@ import { IconButton } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IoIosArrowUp } from 'react-icons/io'
 import { useState, useEffect } from 'react'
+import { RiArrowUpLine } from 'react-icons/ri'
 
 const MotionIconButton = motion(IconButton)
 
@@ -44,21 +45,21 @@ export default function ScrollToTop() {
                     }}
                     zIndex={999}
                     aria-label="Scroll to top"
-                    icon={<IoIosArrowUp size={24} />}
-                    size="lg"
-                    colorScheme="cyan"
-                    bg="gray.800"
-                    color="cyan.400"
-                    opacity="0.6"
+                    icon={<RiArrowUpLine />}
+                    size="sm"
+                    colorScheme="blue"
+                    variant="ghost"
+                    color="blue.400"
+                    opacity={isVisible ? 1 : 0}
+                    transform={isVisible ? 'translateY(0)' : 'translateY(10px)'}
+                    transition="all 0.3s"
                     _hover={{
-                        bg: "gray.700",
-                        transform: "translateY(-2px)",
-                        opacity: "1"
+                        bg: 'transparent',
+                        color: 'blue.500',
                     }}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 0.6 }}
-                    exit={{ y: 20, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    _active={{
+                        bg: 'transparent',
+                    }}
                 />
             )}
         </AnimatePresence>

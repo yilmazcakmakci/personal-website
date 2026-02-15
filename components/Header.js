@@ -10,6 +10,8 @@ import {
     Icon,
     IconButton,
     Text,
+    useColorMode,
+    useColorModeValue
 } from '@chakra-ui/react'
 import { RiArrowDownSLine, RiHome5Line, RiArticleLine, RiSunLine, RiMoonLine } from 'react-icons/ri'
 import NextLink from 'next/link'
@@ -28,7 +30,16 @@ const MotionIconButton = motion(IconButton)
 export default function Header() {
     const router = useRouter()
     const [isVisible, setIsVisible] = useState(true)
-    const [isDark, setIsDark] = useState(true)
+    const { colorMode, toggleColorMode } = useColorMode()
+
+    const bg = useColorModeValue('gray.100', '#0D0F16')
+    const logoColor = useColorModeValue('gray.800', 'gray.200')
+    const logoHoverColor = useColorModeValue('blue.600', 'blue.400')
+    const iconHoverColor = useColorModeValue('blue.600', 'blue.400')
+    const menuButtonBg = useColorModeValue('gray.200', 'gray.800')
+    const menuButtonHoverBg = useColorModeValue('gray.300', 'gray.700')
+    const menuListBg = useColorModeValue('gray.100', '#0D0F16')
+    const menuItemHoverBg = useColorModeValue('gray.200', 'gray.800')
 
     useEffect(() => {
         let lastScrollY = window.scrollY
@@ -63,7 +74,7 @@ export default function Header() {
             position="sticky"
             top={0}
             zIndex={1000}
-            bg="#0D0F16"
+            bg={bg}
             width="100%"
             transform={isVisible ? "translateY(0)" : "translateY(-100%)"}
             transition="transform 0.3s"
@@ -78,9 +89,10 @@ export default function Header() {
                 <NextLink href="/" passHref>
                     <Link
                         _focus={{ boxShadow: 'none' }}
-                        _hover={{ color: 'cyan.600' }}
+                        _hover={{ color: logoHoverColor }}
                         fontSize={14}
                         fontFamily="mono"
+                        color={logoColor}
                     >
                         YILMAZ ÇAKMAKÇI
                     </Link>
@@ -90,16 +102,16 @@ export default function Header() {
                     <Box position="relative" w="40px" h="40px">
                         <AnimatePresence mode="wait" initial={false}>
                             <MotionIconButton
-                                key={isDark ? "dark" : "light"}
+                                key={colorMode}
                                 aria-label="Toggle dark mode"
-                                icon={isDark ? <RiSunLine /> : <RiMoonLine />}
+                                icon={colorMode === 'dark' ? <RiSunLine /> : <RiMoonLine />}
                                 variant="ghost"
-                                onClick={() => setIsDark(!isDark)}
+                                onClick={toggleColorMode}
                                 position="absolute"
                                 w="40px"
                                 h="40px"
                                 _focus={{ boxShadow: 'none' }}
-                                _hover={{ color: 'cyan.600' }}
+                                _hover={{ color: iconHoverColor }}
                                 _active={{ bg: 'transparent' }}
                                 initial={{ rotate: -180, opacity: 0 }}
                                 animate={{ rotate: 0, opacity: 1 }}
@@ -119,6 +131,9 @@ export default function Header() {
                                 display="flex"
                                 alignItems="center"
                                 justifyContent="center"
+                                bg={menuButtonBg}
+                                _hover={{ bg: menuButtonHoverBg }}
+                                _active={{ bg: menuButtonHoverBg }}
                             >
                                 <Flex
                                     w="full"
@@ -134,10 +149,16 @@ export default function Header() {
                                 </Flex>
                             </MenuButton>
                         </Box>
-                        <MenuList minW="120px">
+                        <MenuList bg={menuListBg}>
                             {menu.map(({ name, url, icon }) => {
                                 return (
-                                    <MenuItem fontSize={14} key={url} p={0}>
+                                    <MenuItem
+                                        fontSize={14}
+                                        key={url}
+                                        p={0}
+                                        _hover={{ bg: menuItemHoverBg }}
+                                        bg={menuListBg}
+                                    >
                                         <NextLink href={url} passHref>
                                             <Link
                                                 px={3}
@@ -148,7 +169,7 @@ export default function Header() {
                                                 gap={2}
                                                 _hover={{ textDecoration: 'none' }}
                                             >
-                                                <Icon as={icon} />
+                                                <Icon as={icon} boxSize={4} />
                                                 {name}
                                             </Link>
                                         </NextLink>

@@ -1,4 +1,4 @@
-import { HStack, IconButton, Link } from '@chakra-ui/react'
+import { HStack, IconButton, Link, useColorModeValue } from '@chakra-ui/react'
 import { FaLinkedinIn, FaMediumM, FaGithub, FaTwitter } from 'react-icons/fa'
 import { GrMail } from 'react-icons/gr'
 
@@ -28,14 +28,17 @@ const socialMediaLinks = [
 ]
 
 const Social = () => {
+    const iconBg = useColorModeValue('gray.200', 'gray.800')
+    const iconHoverColor = useColorModeValue('blue.600', 'blue.400')
+
     return (
         <HStack spacing={4} mt={2}>
             {socialMediaLinks.map(({ name, url, icon }) => (
                 <IconButton
                     key={name}
                     borderRadius="full"
-                    _hover={{ color: 'cyan.600' }}
-                    bg="gray.800"
+                    _hover={{ color: iconHoverColor }}
+                    bg={iconBg}
                     title={name}
                     as={Link}
                     isExternal
