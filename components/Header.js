@@ -45,21 +45,23 @@ export default function Header() {
         let lastScrollY = window.scrollY
 
         const handleScroll = () => {
+            if (router.pathname === '/') {
+                setIsVisible(true)
+                return
+            }
             const currentScrollY = window.scrollY
-            const direction = currentScrollY > lastScrollY ? "down" : "up"
-            
-            if (direction === "down" && currentScrollY > 100) {
+            const direction = currentScrollY > lastScrollY ? 'down' : 'up'
+            if (direction === 'down' && currentScrollY > 100) {
                 setIsVisible(false)
             } else {
                 setIsVisible(true)
             }
-
             lastScrollY = currentScrollY
         }
 
-        window.addEventListener("scroll", handleScroll, { passive: true })
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [router.pathname])
 
     const currentPage = () => {
         if (router.pathname === '/') return menu[0]
