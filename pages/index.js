@@ -20,26 +20,13 @@ export default function Home() {
                         Hi, I'm Yılmaz
                     </Heading>
                     <Text color={textColor} mt={6}>
-                        Senior frontend engineer building scalable systems and high-performance products.
+                        Senior Frontend Developer with 6+ years of experience building scalable, performant, and maintainable web
+                        applications.
                     </Text>
                     <Text color={textColor} mt={2}>
-                        I design component architectures, real-time interfaces and frontend infrastructure that help teams move faster.
+                    Experienced in frontend architecture, shared frontend libraries, micro frontend approaches, and
+                    real-time user interfaces.
                     </Text>
-                    <Text mt={6} color={textColor}>
-                        Currently, I am working as a
-                        <Text as="i"> Senior Frontend Developer</Text> at
-                        <Link
-                            href="https://www.hybrone.com/"
-                            _hover={{ color: 'blue.600' }}
-                            fontWeight="600"
-                            isExternal
-                        >
-                            {' '}
-                            Hybrone
-                        </Link>
-                        .
-                    </Text>
-
                     <Box mt={6}>
                         <Text as="small" color={smallTextColor}>
                             Get in Touch

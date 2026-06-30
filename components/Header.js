@@ -98,7 +98,7 @@ export default function Header() {
                     </Link>
                 </NextLink>
 
-                <Flex gap={4} align="center">
+                {/* <Flex gap={4} align="center">
                     <Box position="relative" w="40px" h="40px">
                         <AnimatePresence mode="wait" initial={false}>
                             <MotionIconButton
@@ -178,7 +178,7 @@ export default function Header() {
                             })}
                         </MenuList>
                     </Menu>
-                </Flex>
+                </Flex> */}
             </MotionFlex>
         </Box>
     )
