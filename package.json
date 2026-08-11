@@ -3,10 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -p 3001",
-        "build": "next build",
+        "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev -p 3001",
+        "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
         "start": "next start",
         "format": "prettier --write **/*.js --config .prettierrc"
+    },
+    "engines": {
+        "node": "22.x"
     },
     "dependencies": {
         "@chakra-ui/react": "^1.1.2",
