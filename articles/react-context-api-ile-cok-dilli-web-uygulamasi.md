@@ -1,4 +1,10 @@
-Bu yazıda sizlere React’e Hooks özelliğinin de eklenmesiyle daha fazla öne çıkmaya başlayan Context API ile web uygulamalarımızı çok fazla uğraşa girmeden nasıl birden fazla dili destekler hale getirebileceğimizden bahsedeceğim.
+---
+title: "Context API ile Çoklu Dil Desteği"
+description: "Context API kullanarak React uygulamasına nasıl çoklu dil desteği eklenir?"
+date: "2020.04.15"
+---
+
+Bu yazıda sizlere React'e Hooks özelliğinin de eklenmesiyle daha fazla öne çıkmaya başlayan Context API ile web uygulamalarımızı çok fazla uğraşa girmeden nasıl birden fazla dili destekler hale getirebileceğimizden bahsedeceğim.
 
 ## Spoiler
 
@@ -81,9 +87,9 @@ export default Context
 
 Kodu açıklamak gerekirse;
 
-* Context componentini React’in bize sunmuş olduğu `createContext()` metodu ile oluşturmamız gerekiyor.
-* Bu componentin state’inde şu anki dili tutan bir değişken tanımlıyoruz ve altında da bu değişkeni verilen değerle değiştiren bir fonksiyon yazıyoruz.
-* AppContext.Provider’ın value alanına ise bütün uygulamaya açmak istediğimiz şeyleri veriyoruz.
+* Context componentini React'in bize sunmuş olduğu `createContext()` metodu ile oluşturmamız gerekiyor.
+* Bu componentin state'inde şu anki dili tutan bir değişken tanımlıyoruz ve altında da bu değişkeni verilen değerle değiştiren bir fonksiyon yazıyoruz.
+* AppContext.Provider'ın value alanına ise bütün uygulamaya açmak istediğimiz şeyleri veriyoruz.
 * Bizim örneğimizde dili değiştirmek için kullanacağımız fonksiyonu ve biraz önce yazdığımız `languages.js`içerisinden `currentLang` alanında tanımlı olan dil için olan metinleri bütün uygulamadan erişilebilir hale getiriyoruz.
 
 ## App.js
@@ -132,8 +138,8 @@ export default Text = () => {
 
 Kodu açıklayacak olursak;
 
-* `useContext()` hook’unu kullanarak Context componentimizden dışarıya açtığımız object’e ulaşabiliyoruz. Parametre olarak `createContext()` ile oluşturduğumuz `AppContext'i` veriyoruz.
-* Uygulamadaki metin alanlarına ise Context’den gelen metinleri giriyoruz.Örneğin, `texts.title` dediğimizde şu anda hangi dil seçili ise `languages.js`dosyamızdan o dilin object’indeki `title`alanı gösterilecek.
+* `useContext()` hook'unu kullanarak Context componentimizden dışarıya açtığımız object'e ulaşabiliyoruz. Parametre olarak `createContext()` ile oluşturduğumuz `AppContext'i` veriyoruz.
+* Uygulamadaki metin alanlarına ise Context'den gelen metinleri giriyoruz.Örneğin, `texts.title` dediğimizde şu anda hangi dil seçili ise `languages.js`dosyamızdan o dilin object'indeki `title`alanı gösterilecek.
 * Alt taraftaki select kutusunda ise seçilen dil değiştirildiğinde `changeLang()` fonksiyonu şu anki dili seçili seçeneğin `value`değeri ile değiştiriyor.
 
 ---

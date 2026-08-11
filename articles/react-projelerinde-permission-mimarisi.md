@@ -1,3 +1,9 @@
+---
+title: "React'te İzin Yönetimi"
+description: "Context API ve custom hook kullanarak sayfa ve component bazlı izin kontrolü nasıl yapılır?"
+date: "2023.01.17"
+---
+
 Bir web sitesi programlarken bir kullanıcının giriş yapmış dahi olsa tüm özelliklere erişmesini istemeyebiliriz. Gerekli izinlere sahip olmayan kullanıcıların bazen sayfaya hiç girememesini sağlamamız, bazen de bir butonu disabled olarak göstermemiz gerekebilir. Bu yazıda, bu durumu React kullanılan projelerde nasıl yönetebileceğimizden kendi kullandığım yöntemler ile birlikte bahsedeceğim.
 
 Öncelikle giriş yapmış kullanıcının izinlerinin aşağıdaki gibi bir liste halinde backend tarafından geldiğini varsayalım. Ancak biz bu örneği basit tutmak adına kendimiz tanımlayacağız.

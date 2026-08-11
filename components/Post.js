@@ -1,62 +1,64 @@
-import { Link, Text, Flex, Image } from '@chakra-ui/react'
+import { Link, Text, Flex, Box, useColorModeValue } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import formatDate from '../utils/format-date'
 
-export default function Post({ p, page }) {
-    const link = `/${page}/${p.slug}`
-    const isProject = page === 'projects'
+export default function Post({ p, isLast }) {
+    const link = `/articles/${p.slug}`
+    const borderColor = useColorModeValue('gray.200', 'gray.800')
+    const borderHoverColor = useColorModeValue('gray.300', 'gray.700')
+    const titleColor = useColorModeValue('blue.600', 'blue.400')
+    const descColor = useColorModeValue('gray.600', 'gray.400')
+    const descHoverColor = useColorModeValue('gray.700', 'gray.300')
+    const dateColor = useColorModeValue('gray.500', 'gray.500')
+    const dateHoverColor = useColorModeValue('gray.600', 'gray.400')
 
     return (
         <NextLink href={link} passHref>
             <Link
+                _hover={{ textDecoration: 'none' }}
                 _focus={{ boxShadow: 'none' }}
-                _hover={{ backgroundColor: 'gray.800', color: 'cyan.600' }}
-                borderRadius={6}
-                display={['block', 'block', 'flex']}
-                px={4}
-                py={8}
-                w="full"
-                bg={['gray.800', 'gray.800', 'none']}
+                display="block"
+                role="group"
             >
-                {isProject && (
-                    <Image
-                        src={p.media[0]}
-                        alt={p.title}
-                        width={256}
-                        height={192}
-                        display={['none', 'none', 'block']}
-                        borderRadius={4}
-                    />
-                )}
-
-                <Flex
-                    w="full"
-                    pl={[0, 0, isProject ? 8 : 0]}
-                    direction="column"
+                <Box
+                    borderBottom={!isLast && "1px"}
+                    borderColor={borderColor}
+                    pb={8}
+                    transition="all 0.2s"
+                    _groupHover={{
+                        borderColor: borderHoverColor
+                    }}
                 >
-                    <Flex
-                        justify="space-between"
-                        display={['block', 'block', 'flex']}
-                    >
+                    <Flex direction="column" gap={3}>
                         <Text
-                            color="cyan.600"
-                            fontSize={[20, 24]}
-                            fontWeight="semibold"
+                            color={titleColor}
+                            fontSize="xl"
+                            fontWeight="medium"
+                            transition="all 0.2s"
                         >
                             {p.title}
                         </Text>
+
+                        <Text
+                            color={descColor}
+                            fontSize="md"
+                            lineHeight="tall"
+                            transition="all 0.2s"
+                            _groupHover={{ color: descHoverColor }}
+                        >
+                            {p.description}
+                        </Text>
+
+                        <Text
+                            color={dateColor}
+                            fontSize="sm"
+                            transition="all 0.2s"
+                            _groupHover={{ color: dateHoverColor }}
+                        >
+                            {formatDate(p.date)}
+                        </Text>
                     </Flex>
-                    <Text display="block" as="i" fontSize={12}>
-                        {formatDate(p.date)}
-                    </Text>
-                    <Text
-                        mt={[4, 4, isProject ? 'auto' : 4]}
-                        fontSize={16}
-                        noOfLines={2}
-                    >
-                        {p.description}
-                    </Text>
-                </Flex>
+                </Box>
             </Link>
         </NextLink>
     )

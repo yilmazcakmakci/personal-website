@@ -1,55 +1,54 @@
 import Markdown from '../../components/Markdown'
 import Layout from '../../components/Layout'
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import formatDate from '../../utils/format-date'
 import readTime from '../../utils/readtime'
-import Table from '../../utils/airtable'
-import getContent from '../../utils/get-content'
+import { getAllArticles, getArticleBySlug } from '../../utils/get-content'
+import ScrollToTop from '../../components/ScrollToTop'
 
 export default function ArticleDetail({
     article: { title, date, content, description, media },
 }) {
+    const headingColor = useColorModeValue('gray.800', 'gray.200')
+    const metaColor = useColorModeValue('gray.600', 'gray.400')
+
     return (
         <Layout title={title} description={description}>
             <Box px={4} mx="auto">
                 <Box mb={8}>
-                    <Heading color="gray.200" size="xl" mb={4}>
+                    <Heading color={headingColor} size="xl" mb={4}>
                         {title}
                     </Heading>
-                    <Text display="block" as="i" fontSize={12}>
+                    <Text display="block" as="i" fontSize={12} color={metaColor}>
                         {formatDate(date)} {`· ${readTime(content)} min read`}
                     </Text>
                 </Box>
                 <Markdown content={content} />
+                <ScrollToTop />
             </Box>
         </Layout>
     )
 }
 
-const table = new Table('Articles')
-
 export async function getStaticProps({ params }) {
-    const article = await table.getBySlug(params.slug)
-    const content = await getContent(params.slug)
+    const article = getArticleBySlug(params.slug)
 
     return {
         props: {
-            article: { ...article, content },
+            article,
         },
     }
 }
 
 export async function getStaticPaths() {
-    const articles = await table.getAll()
+    const articles = getAllArticles()
 
     return {
-        paths: articles.map((article) => {
-            return {
-                params: {
-                    slug: article.slug,
-                },
-            }
-        }),
+        paths: articles.map((article) => ({
+            params: {
+                slug: article.slug,
+            },
+        })),
         fallback: false,
     }
 }
